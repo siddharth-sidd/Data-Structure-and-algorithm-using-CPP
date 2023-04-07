@@ -1,0 +1,39 @@
+using namespace std;
+int Is_Cycle(SLL &obj) // checking wether the cycle is present ;
+{
+     node *t1,*t2;
+     t1= obj.getfirstnode();  // geting start pointer
+     t2= t1;
+     do{
+        if(t1)    // wether there is not NULL in first node;
+           return 0;
+        if( t1->next!= NULL){
+               t1= t1->next->next
+            }
+        else 
+               return 0;
+            t2 = t2->next; 
+    } while ( t1 != t2) ;  //  when the t1 & t2 become equal there there were a cycle 
+       return 1; 
+
+}
+ int Length_Of_Cycle(SLL & obj)  //Finding the length of cycle;
+ {
+    if(Is_Cycle(obj))
+    {
+          node *t1,t2;
+          int count = 1 ;
+          t1=t2= obj.getfirstnode();
+        do{
+            t1= t1->next->next ;
+             t2= t2->next;
+        } while(t1 != t2) ;      // two pointer method applied ;
+          while(t1 ->next != t2)  // make t1 as stop and t2 as moving upto t1
+          {
+              count ++ ;
+
+          } 
+            return count ;   
+    }
+       return 0;
+ }
